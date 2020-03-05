@@ -27,19 +27,35 @@ function teambuilder() {
         {
             message: "Input new team member name: ",
             name: "name",
-            // validate: function(){
-            //     if (name === ""){
-            //         console.log("Please enter a valid name");
-            //     }
-            // }
+            validate: function(name){
+                if (name === "" || name === null || name === undefined){
+                    console.log("Please enter a valid name");
+                }else {
+                    return true;
+                }
+            }
         },
         {
             message: "Input new team member ID: ",
-            name: "id"
+            name: "id",
+            validate: function(id){
+                if (id === "" || id === null || id === undefined){
+                    console.log("Please enter a valid id");
+                }else {
+                    return true;
+                }
+            }
         },
         {
             message: "Input new team member email: ",
-            name: "email"
+            name: "email",
+            validate: function(email){
+                if (email === "" || email === null || email === undefined){
+                    console.log("Please enter a valid email");
+                }else {
+                    return true;
+                }
+            }
         }
     ]).then(function(basicInfo) {
         if (basicInfo.role === "Manager"){
@@ -47,7 +63,14 @@ function teambuilder() {
             inquirer.prompt([
                 {
                     message: "Input Office Number: ",
-                    name: "officeNumber"
+                    name: "officeNumber",
+                    validate: function(officeNumber){
+                        if (officeNumber === "" || officeNumber === null || officeNumber === undefined){
+                            console.log("Please enter a valid Office Number");
+                        }else {
+                            return true;
+                        }
+                    }
                 }
             ]).then(function(expandedInfo) {
                 const manager = new Manager(basicInfo.name, basicInfo.id, basicInfo.email, expandedInfo.officeNumber)
@@ -58,7 +81,14 @@ function teambuilder() {
             inquirer.prompt([
                 {
                     message: "Input Github Username: ",
-                    name: "github"
+                    name: "github",
+                    validate: function(github){
+                        if (github === "" || github === null || github === undefined){
+                            console.log("Please enter a valid github user");
+                        }else {
+                            return true;
+                        }
+                    }
                 }
             ]).then(function(expandedInfo) {
                 const engineer = new Engineer(basicInfo.name, basicInfo.id, basicInfo.email, expandedInfo.github)
@@ -69,7 +99,14 @@ function teambuilder() {
             inquirer.prompt([
                 {
                     message: "Input school you're attending: ",
-                    name: "school"
+                    name: "school",
+                    validate: function(school){
+                        if (school === "" || school === null || school === undefined){
+                            console.log("Please enter a valid school");
+                        }else {
+                            return true;
+                        }
+                    }
                 }
             ]).then(function(expandedInfo) {
                 const intern = new Intern(basicInfo.name, basicInfo.id, basicInfo.email, expandedInfo.school)
