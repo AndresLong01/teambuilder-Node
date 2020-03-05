@@ -9,11 +9,16 @@ const OUTPUT_DIR = path.resolve(__dirname, "output")
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+//Checking the render function in the htmlRenderer.js
+//render() takes in an array as an argument.
+//Created an array to store all the dynamic objects created in the application.
 const employees = [];
 let choices = ["Manager", "Engineer", "Intern"];
 let managerValidation = false;
 
 function teambuilder() {
+    //After one manager is determined and validated you can 
+    //only choose engineer or intern.
     if (managerValidation === true){
         choices = ["Engineer", "Intern"]
     }
@@ -58,6 +63,7 @@ function teambuilder() {
             }
         }
     ]).then(function(basicInfo) {
+        //Logic controller for different roles
         if (basicInfo.role === "Manager"){
             managerValidation = true;
             inquirer.prompt([
@@ -116,7 +122,8 @@ function teambuilder() {
         }
     })
 }
-
+//function controlling the writing of the file and the restarting of the application
+//if more team members need to be added!
 function newMember() {
     inquirer.prompt([
         {
@@ -134,4 +141,5 @@ function newMember() {
         }
     })
 }
+//running my function for the first time <3
 teambuilder();
