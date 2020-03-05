@@ -57,7 +57,10 @@ function teambuilder() {
             validate: function(email){
                 if (email === "" || email === null || email === undefined){
                     console.log("Please enter a valid email");
-                }else {
+                }else if(email.includes('@') === false || email.includes('.com') === false){
+                    console.log("\nValid emails include @ and .com")
+                }
+                else {
                     return true;
                 }
             }
